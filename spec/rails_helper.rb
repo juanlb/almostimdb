@@ -1,3 +1,7 @@
+require 'simplecov'
+require 'simplecov'
+SimpleCov.start
+
 require 'spec_helper'
 
 ENV['RAILS_ENV'] ||= 'test'
