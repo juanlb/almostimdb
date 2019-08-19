@@ -6,7 +6,6 @@ class Api::V1::MoviesController < ApiController
   }.freeze
 
   before_action :set_movie, only: [:show, :update, :destroy]
-  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def index
     render json: MovieSerializer.new(Movie.all, SERIALIZER_OPTIONS).serializable_hash
@@ -45,9 +44,5 @@ class Api::V1::MoviesController < ApiController
 
   def movie_params
     params.require(:movie).permit(:title, :release_year)
-  end
-
-  def render_not_found_response(exception)
-    render json: { error: exception.message }, status: :not_found
   end
 end

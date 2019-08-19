@@ -10,8 +10,22 @@ class MovieSerializer
     RomanNumerals.to_roman(obj.release_year)
   end
 
-  has_many :directors, record_type: :person, serializer: PersonResumedSerializer
-  has_many :producers, record_type: :person, serializer: PersonResumedSerializer
-  has_many :casting, record_type: :person, serializer: PersonResumedSerializer
+  has_many :directors, record_type: :person, serializer: PersonResumedSerializer, links: {
+    related: ->(object) {
+      "#{object.base_url}movies/#{object.id}/directors"
+    }
+  }
+
+  has_many :producers, record_type: :person, serializer: PersonResumedSerializer, links: {
+    related: ->(object) {
+      "#{object.base_url}movies/#{object.id}/producers"
+    }
+  }
+
+  has_many :casting, record_type: :person, serializer: PersonResumedSerializer, links: {
+    related: ->(object) {
+      "#{object.base_url}movies/#{object.id}/cast"
+    }
+  }
 
 end

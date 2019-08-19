@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :movies, only: [:index, :show, :create, :update, :destroy]
+      resources :movies, only: [:index, :show, :create, :update, :destroy] do
+        resources :directors, only: [:index, :create, :destroy]
+        resources :producers, only: [:index]
+        resources :cast, only: [:index]
+      end
       resources :people, only: [:index, :show, :create, :update, :destroy]
     end
   end

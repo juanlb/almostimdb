@@ -6,7 +6,6 @@ class Api::V1::PeopleController < ApiController
   }.freeze
 
   before_action :set_person, only: [:show, :update, :destroy]
-  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def index
     render json: PersonSerializer.new(Person.all, SERIALIZER_OPTIONS).serializable_hash
@@ -45,9 +44,5 @@ class Api::V1::PeopleController < ApiController
 
   def person_params
     params.require(:person).permit(:first_name, :last_name, :aliases)
-  end
-
-  def render_not_found_response(exception)
-    render json: { error: exception.message }, status: :not_found
   end
 end

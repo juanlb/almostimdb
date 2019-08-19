@@ -14,7 +14,10 @@ class Person < ApplicationRecord
   has_many :movies_as_member, through: :casts, source: :movie
 
   def url
-    base_url = ENV["BASE_URL_API"]
     "#{base_url}people/#{id}"
+  end
+  
+  def base_url
+    ENV["BASE_URL_API"]
   end
 end
