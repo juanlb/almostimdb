@@ -17,7 +17,7 @@ RSpec.describe Api::V1::MoviesController, type: :controller do
   end
 
   describe 'GET #show' do
-    let!(:movie) { create(:movie, title: 'A Title') }
+    let!(:movie) { create(:movie) }
     it 'returns http success' do
       get :show, params: { id: movie.id }
       expect(response).to have_http_status(:success)
