@@ -2,6 +2,9 @@
 
 class Api::V1::PeopleController < ApiController
   def index
-    render json: PersonSerializer.new(Person.all).serializable_hash
- end
+    options = {}
+    options[:include] = [:movies_as_director]
+
+    render json: PersonSerializer.new(Person.all, options).serializable_hash
+  end
 end

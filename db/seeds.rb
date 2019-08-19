@@ -9,3 +9,7 @@
   hf = Person.create(last_name: 'Ford', first_name: 'Harrison', aliases: 'Han Solo, Indiana Jones')
   im = Person.create(last_name: 'McKellen', first_name: 'Ian', aliases: 'Gandalf, Magneto')
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Direction.create(movie: sw, person: hf)
+Direction.create(movie: lotr, person: hf)
