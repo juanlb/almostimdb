@@ -12,7 +12,7 @@ RSpec.describe Api::V1::MoviesController, type: :controller do
 
     it 'returns movie array' do
       get :index
-      expect(JSON.parse(response.body).first['title']).to eq movie.title
+      expect(JSON.parse(response.body)['data'].first['attributes']['title']).to eq movie.title
     end
   end
 end

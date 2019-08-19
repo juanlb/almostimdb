@@ -2,6 +2,6 @@
 
 class Api::V1::MoviesController < ApiController
   def index
-    render json: Movie.all
+    render json: MovieSerializer.new(Movie.all).serializable_hash
   end
 end
