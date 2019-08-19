@@ -2,5 +2,9 @@
 
 class MovieSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :title, :release_year
+  attributes :title
+
+  attribute :release_year do |obj|
+    RomanNumerals.to_roman(obj.release_year)
+  end
 end
