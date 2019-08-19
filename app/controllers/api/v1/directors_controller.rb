@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class Api::V1::DirectorsController < ApiController
-    SERIALIZER_OPTIONS = {
-        include:  [:directors, :producers, :casting]
-      }.freeze
+  SERIALIZER_OPTIONS = {
+    include:  [:directors, :producers, :casting]
+  }.freeze
 
-    before_action :set_movie
-    before_action :set_direction, only: [:destroy]
+  before_action :set_movie
+  before_action :set_direction, only: [:destroy]
 
   def index
     render json: PersonResumedSerializer.new(@movie.directors).serializable_hash
@@ -16,9 +16,9 @@ class Api::V1::DirectorsController < ApiController
     direction = Direction.new(direction_params)
     direction.movie = @movie
     if direction.save
-        render json: MovieSerializer.new(@movie, SERIALIZER_OPTIONS).serializable_hash
+      render json: MovieSerializer.new(@movie, SERIALIZER_OPTIONS).serializable_hash
     else
-        render json: direction.errors, status: :unprocessable_entity
+      render json: direction.errors, status: :unprocessable_entity
     end
   end
 
