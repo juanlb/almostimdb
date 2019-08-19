@@ -68,3 +68,4 @@ gem 'roman-numerals', '~> 0.3.0'
 gem 'figaro'
 
 gem 'simplecov', require: false, group: :test
+gem 'pry'
