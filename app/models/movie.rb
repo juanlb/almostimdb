@@ -7,4 +7,14 @@ class Movie < ApplicationRecord
   has_many :directions
   has_many :directors, through: :directions, source: :person
 
+  has_many :productions
+  has_many :producers, through: :productions, source: :person
+
+  has_many :casts
+  has_many :casting, through: :casts, source: :person
+
+  def url
+    base_url = ENV['BASE_URL_API']
+    "#{base_url}movie/#{id}"
+  end
 end

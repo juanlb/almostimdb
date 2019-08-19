@@ -4,10 +4,7 @@ class PersonSerializer
   include FastJsonapi::ObjectSerializer
   attributes :first_name, :last_name, :aliases
 
-  link :self do |object|
-    base_url = ENV["BASE_URL_API"]
-    "#{base_url}people/#{object.id}"
-  end
+  link :self, :url
 
   attribute :full_name do |obj|
     aliases = "(#{obj.aliases})" unless obj.aliases.blank?
@@ -15,4 +12,6 @@ class PersonSerializer
   end
 
   has_many :movies_as_director, record_type: :movie, serializer: MovieResumedSerializer
+  has_many :movies_as_producer, record_type: :movie, serializer: MovieResumedSerializer
+  has_many :movies_as_member, record_type: :movie, serializer: MovieResumedSerializer
 end

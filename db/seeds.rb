@@ -13,3 +13,7 @@
 
 Direction.create(movie: sw, person: hf)
 Direction.create(movie: lotr, person: hf)
+
+Production.create(movie: sw, person: im)
+
+Cast.create(movie: sw, person: hf)
