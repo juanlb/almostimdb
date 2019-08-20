@@ -30,7 +30,7 @@ To get HTTPS I used the feature that provides the Application Load Balancer.
 I've choosed `JWT` to secure the API unsafe methods, because is strong, easy and allows that other services creates valid tokens to be used with this API.
 For example, if I give the JWT secret to the developers of the `existing website` mentioned on the challenge, they could create valid JWT for existing users.
 
-`json:api` is more a standard that a library. It is a good way to get the API responses organized.
+`json:api` is more a standard than a library. It is a good way to get the API responses organized.
 I use the `fast_jsonapi` gem, that simplify that work and ensures that the result have always the same structure.
 
 ### Gems
