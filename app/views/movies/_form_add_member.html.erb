@@ -1,0 +1,10 @@
+<%= form_with(url: url, local: true) do |form| %>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= form.select(:person_id, options_from_collection_for_select(available_members, :id, :full_name), {},{class: "form-control"}) %>
+    </div>
+    <div class="col-sm-6">
+        <%= form.submit "Add #{label}", class: 'btn btn-primary', disabled: available_members.empty?%>
+    </div>
+  </div>
+<% end %>

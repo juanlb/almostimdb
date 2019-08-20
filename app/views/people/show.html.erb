@@ -1,0 +1,42 @@
+<dl class="row">
+  <dt class="col-sm-3">
+    Name:
+  </dt>
+  <dd class="col-sm-9">
+    <h4>
+      <%= "#{@person.first_name} #{@person.last_name}" %>
+    </h4>
+  </dd>
+  <dt class="col-sm-3">
+    Aliases:
+  </dt>
+  <dd class="col-sm-9">
+      <%= @person.aliases %>
+  </dd>
+</dl>
+
+<div class="card card-body bg-light m-1">
+<h4>Movies as Director</h4>
+<ul>
+  <%= render partial: 'movies/movie', collection: @person.movies_as_director %>
+</ul>
+</div>
+
+<div class="card card-body bg-light m-1">
+<h4>Movies as Producer</h4>
+<ul>
+  <%= render partial: 'movies/movie', collection: @person.movies_as_producer %>
+</ul>
+</div>
+
+<div class="card card-body bg-light m-1">
+<h4>Movies as Cast</h4>
+<ul>
+  <%= render partial: 'movies/movie', collection: @person.movies_as_member %>
+</ul>
+</div>
+
+<% content_for :operations do %>
+  <%= link_to 'Edit', edit_person_path(@person), class: 'btn btn-primary' %>
+  <%= link_to 'Destroy', @person, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<% end %>

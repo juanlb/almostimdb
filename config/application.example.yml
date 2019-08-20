@@ -1,0 +1,11 @@
+DATABASE_USER: 'root'
+DATABASE_PASS: 'root'
+DATABASE_HOST: 'localhost'
+BASE_URL_API: http://localhost:3000/api/v1/
+RAILS_SERVE_STATIC_FILES: 'true'
+development:
+  DATABASE_NAME: 'almostimdb_development'
+test:
+  DATABASE_NAME: 'almostimdb_test'
+production:
+  DATABASE_NAME: 'almostimdb_production'

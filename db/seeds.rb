@@ -3,5 +3,19 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+  sw = Movie.create(title: 'Star Wars', release_year: 1977 )
+  lotr = Movie.create(title: 'Lord of the Rings', release_year: 2001)
+
+  hf = Person.create(last_name: 'Ford', first_name: 'Harrison', aliases: 'Han Solo, Indiana Jones')
+  im = Person.create(last_name: 'McKellen', first_name: 'Ian', aliases: 'Gandalf, Magneto')
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Direction.create(movie: sw, person: hf)
+Direction.create(movie: lotr, person: hf)
+
+Production.create(movie: sw, person: im)
+
+Cast.create(movie: sw, person: hf)
+
+User.create(email: 'admin@admin.com', password: 'admin@admin.com')

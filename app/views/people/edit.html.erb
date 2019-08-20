@@ -1,0 +1,7 @@
+<h1>Editing Person</h1>
+
+<%= render 'form', person: @person %>
+
+<% content_for :operations do %>
+  <%= link_to 'Show', @person, class: 'btn btn-primary' %>
+<% end %>

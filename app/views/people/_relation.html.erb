@@ -1,0 +1,4 @@
+  <li>
+      <%= link_to relation.person.full_name, relation.person %>
+      <%= link_to icon('fas', 'times', class: 'fa-red'), "/movies/#{relation.movie.id}/#{member_type}/#{relation.id}" ,method: :delete %>
+  </li>
