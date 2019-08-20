@@ -1,2 +1,30 @@
-<h1>People#index</h1>
-<p>Find me in app/views/people/index.html.erb</p>
+<h1>People</h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Aliases</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <tr>
+        <td>
+          <%= link_to "#{person.first_name} #{person.last_name}", person %>
+        </td>
+        <td>
+          <%= person.aliases %>
+        </td>
+        <td><%= link_to 'Edit', edit_person_path(person), class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% content_for :footer do %>
+<%= link_to 'New Person', new_person_path, class: 'btn btn-primary' %>
+<% end %>

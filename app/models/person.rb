@@ -13,6 +13,11 @@ class Person < ApplicationRecord
   has_many :casts, dependent: :destroy
   has_many :movies_as_member, through: :casts, source: :movie
 
+  def full_name
+    aliases_str = "(#{aliases})" unless aliases.blank?
+    "#{first_name} #{last_name} #{aliases_str}".strip
+  end
+
   def url
     "#{base_url}people/#{id}"
   end

@@ -2,14 +2,9 @@
 
 class PersonSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :first_name, :last_name, :aliases
+  attributes :first_name, :last_name, :aliases, :full_name
 
   link :self, :url
-
-  attribute :full_name do |obj|
-    aliases = "(#{obj.aliases})" unless obj.aliases.blank?
-    "#{obj.first_name} #{obj.last_name} #{aliases}".strip
-  end
 
   has_many :movies_as_director, record_type: :movie, serializer: MovieResumedSerializer
   has_many :movies_as_producer, record_type: :movie, serializer: MovieResumedSerializer

@@ -1,0 +1,45 @@
+<dl class="row">
+  <dt class="col-sm-3">
+    Title:
+  </dt>
+  <dd class="col-sm-9">
+    <h4>
+      <%= @movie.title %>
+    </h4>
+  </dd>
+  <dt class="col-sm-3">
+    Release year:
+  </dt>
+  <dd class="col-sm-9">
+      <%= "#{@movie.roman_release_year} (#{@movie.release_year})" %>
+  </dd>
+</dl>
+
+<div class="card card-body bg-light m-1">
+<h4>Directors</h4>
+<ul>
+  <%= render partial: 'people/relation', collection: @movie.directions, locals: {member_type: 'director'} %>
+</ul>
+<%= render partial: 'form_add_member', locals: {url: director_movie_path(@movie), available_members: @available_directors, label: 'Director'} %>
+</div>
+
+<div class="card card-body bg-light m-1">
+<h4>Producers</h4>
+<ul>
+  <%= render partial: 'people/relation', collection: @movie.productions, locals: {member_type: 'producer'} %>
+</ul>
+<%= render partial: 'form_add_member', locals: {url: producer_movie_path(@movie), available_members: @available_producers, label: 'Producer'} %>
+</div>
+
+<div class="card card-body bg-light m-1">
+<h4>Cast</h4>
+<ul>
+  <%= render partial: 'people/relation', collection: @movie.casts, locals: {member_type: 'cast'} %>
+</ul>
+<%= render partial: 'form_add_member', locals: {url: cast_movie_path(@movie), available_members: @available_casting, label: 'Cast'} %>
+</div>
+
+<% content_for :operations do %>
+  <%= link_to 'Edit', edit_movie_path(@movie), class: 'btn btn-primary' %>
+  <%= link_to 'Destroy', @movie, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<% end %>

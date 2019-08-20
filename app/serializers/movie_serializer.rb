@@ -7,7 +7,7 @@ class MovieSerializer
   link :self, :url
 
   attribute :release_year do |obj|
-    RomanNumerals.to_roman(obj.release_year)
+    obj.roman_release_year
   end
 
   has_many :directors, record_type: :person, serializer: PersonResumedSerializer, links: {

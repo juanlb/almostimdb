@@ -1,0 +1,7 @@
+<h1>Editing Movie</h1>
+
+<%= render 'form', movie: @movie %>
+
+<% content_for :operations do %>
+  <%= link_to 'Show', @movie, class: 'btn btn-primary' %>
+<% end %>
