@@ -17,3 +17,5 @@ Direction.create(movie: lotr, person: hf)
 Production.create(movie: sw, person: im)
 
 Cast.create(movie: sw, person: hf)
+
+User.create(email: 'admin@admin.com', password: 'capoeira')

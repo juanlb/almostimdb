@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Almostimdb</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
-</html>
+  <%= render "layouts/pre_yield" %>
+      <% if @fullpage %>
+            <%= yield %>
+      <% else %>
+          <div class="row">
+            <div class="col-sm-9">
+              <%= yield %>
+            </div>
+            <div class="col-sm-3" id="div-operations">
+              <%= yield :operations %>
+            </div>
+          </div>
+      <% end%>
+  <%= render "layouts/post_yield" %>

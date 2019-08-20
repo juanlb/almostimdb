@@ -5,6 +5,7 @@ class Api::V1::MoviesController < ApiController
     include: [:directors, :producers, :casting]
   }.freeze
 
+  before_action :authorize_request, except: [:index, :show]
   before_action :set_movie, only: [:show, :update, :destroy]
 
   def index

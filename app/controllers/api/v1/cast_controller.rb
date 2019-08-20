@@ -5,6 +5,7 @@ class Api::V1::CastController < ApiController
     include:  [:directors, :producers, :casting]
   }.freeze
 
+  before_action :authorize_request, except: [:index]
   before_action :set_movie
   before_action :set_cast, only: [:destroy]
 

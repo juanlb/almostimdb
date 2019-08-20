@@ -5,6 +5,7 @@ class Api::V1::PeopleController < ApiController
     include: [:movies_as_director, :movies_as_producer, :movies_as_member]
   }.freeze
 
+  before_action :authorize_request, except: [:index, :show]
   before_action :set_person, only: [:show, :update, :destroy]
 
   def index

@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::DirectorsController, type: :controller do
+  login_user
   describe 'GET #index' do
     let!(:direction) { create(:direction) }
     it 'returns http success' do
@@ -12,6 +13,7 @@ RSpec.describe Api::V1::DirectorsController, type: :controller do
   end
 
   describe 'POST #create' do
+    before { request.headers.merge!('Authorization' => "Bearer #{valid_jwt}") }
     context 'with valid params' do
       let!(:movie) { create(:movie) }
       let!(:person) { create(:person) }
@@ -32,6 +34,7 @@ RSpec.describe Api::V1::DirectorsController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
+    before { request.headers.merge!('Authorization' => "Bearer #{valid_jwt}") }
     context 'existing record' do
       let!(:direction) { create(:direction) }
       it 'returns http success' do
@@ -47,5 +50,12 @@ RSpec.describe Api::V1::DirectorsController, type: :controller do
           expect(response).to have_http_status(:not_found)
         end
       end
+  end
+
+  def valid_jwt
+    payload = {
+      user_id: User.first.id
+    }
+    JsonWebToken.encode(payload)
   end
 end

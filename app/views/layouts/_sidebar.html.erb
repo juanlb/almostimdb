@@ -1,0 +1,26 @@
+<% if current_user %>
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item" >
+            <%= link_to movies_path, class: [:'nav-link', class_active('apps')] do %>
+            <%= icon('fas', 'film') %> 
+            Movies
+            <% end %>
+          </li>
+          <li class="nav-item" >
+            <%= link_to people_path, class: [:'nav-link', class_active('users')] do %>
+            <%= icon('fas', 'users') %> 
+            People
+            <% end %>
+          </li>
+          <li class="nav-item" >
+            <%= link_to api_key_index_path, class: [:'nav-link', class_active('users')] do %>
+            <%= icon('fas', 'key') %> 
+            API Key
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+<% end %>
