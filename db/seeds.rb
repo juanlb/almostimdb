@@ -18,4 +18,4 @@ Production.create(movie: sw, person: im)
 
 Cast.create(movie: sw, person: hf)
 
-User.create(email: 'admin@admin.com', password: 'capoeira')
+User.create(email: 'admin@admin.com', password: 'admin@admin.com')

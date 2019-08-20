@@ -6,6 +6,7 @@ services:
       DATABASE_HOST: db 
       DATABASE_USER: root
       DATABASE_PASS: root
+      DATABASE_NAME: almostimdb_production
       RAILS_ENV: production
       SECRET_KEY_BASE: AVeryHardSecretToGuess
       RAILS_SERVE_STATIC_FILES: 'true'
