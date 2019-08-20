@@ -102,7 +102,7 @@
 					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Producerts",
+					"name": "Producers",
 					"item": [
 						{
 							"name": "index",
@@ -570,7 +570,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.Gqwo9386sQtOLrTn0-loEJHsnM2_45A2EwVWapJL5rk",
+				"value": "{{JWT}}",
 				"type": "string"
 			}
 		]

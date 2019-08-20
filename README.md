@@ -80,23 +80,32 @@ $ docker-compose down
 
 The `nginx` reverse proxy is a docker image made by me, to present a strong web server in front of the puma app server.
 
+# Deployed app
+
+* https://almostimdb.snappler-app.com
+* user: admin@admin.com
+* pass: admin@admin.com
+
+You can also create your own user.
+
+I deployed the app with `Docker` on `AWS ECS` (Elastic Container Service).
+Docker is the devop best friend :-)
+On `AWS` I used: ECS, Application Load Balancer and MySQL RDS.
+To get HTTPS I used the feature that provides the Application Load Balancer.
+
+It runs on a high availability infrastructure. Behind the ALB it is running two docker containers, each in different availability zones (us-east-1a, us-east-1b)
+
 # API Docs
 
 Inside this repo there is a file called `ItCrowd.postman_collection.json`. It is Postman collection to use and test the API.
-Once imported, you have to create a `enviroment` and create the variable `host`.
 
-If use on localhost:
-```
-host = http://localhost:3000/api/v1
-```
+Also include the files:
+* Development.postman_environment.json
+* Production.postman_environment.json
 
-If use deployed app:
-```
-host = https://almostimdb.snappler-app/api/v1
-```
+They have configured the variables needed to test the API
 
 The security is also configured. The unsafe methods needs a JWT as a `Bearer token`.
-
 The `ItCrowd` collection has the security setted. The unsafe methods inherits from this configuration.
 
 ## Get the JWT
