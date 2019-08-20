@@ -51,6 +51,35 @@ From the github repo: Devise is a flexible authentication solution for Rails bas
 * Allows you to have multiple models signed in at the same time;
 * Is based on a modularity concept: use only what you really need.
 
+
+# Docker / docker-compose
+
+Running with `docker`.
+**NOTE**: The file `docker-compose.yml` use a `MySQL` image without volume. It is just for test.
+
+## Start the server:
+
+```
+$ git clone git@github.com:juan-lb/almostimdb.git
+$ cd almostimdb
+$ mv config/application.example.yml config/application.yml
+$ echo 51a7ba430e5b7a6ff2e4625a621e5719 > ./config/master.key
+$ docker-compose build
+$ docker-compose up -d
+(wait a few seconds for the DB initialize)
+$ docker-compose run app rake db:create db:migrate db:seed
+```
+The server is ready on http://localhost
+
+**NOTE**: This configuration use `80` port. If it is unavailable, edit `nginx` sections of `docker-compose.yml`.
+
+To stop:
+```
+$ docker-compose down
+```
+
+The `nginx` reverse proxy is a docker image made by me, to present a strong web server in front of the puma app server.
+
 # API Docs
 
 Inside this repo there is a file called `ItCrowd.postman_collection.json`. It is Postman collection to use and test the API.
