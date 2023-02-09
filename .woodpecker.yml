@@ -3,6 +3,9 @@ pipeline:
     image: debian
     commands:
       - echo "This is the build step"
+    when:
+      event: [manual]
+
   a-test-step:
     image: debian
     commands:
